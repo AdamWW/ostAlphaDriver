@@ -15,7 +15,7 @@ public class OADClient extends JFrame {
         super("OST ALPHA DRIVER APP");
         setIconImage(Constants.OST_ICON.getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setContentPane(new OADPanel());
     }
 
     /**

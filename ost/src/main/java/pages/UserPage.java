@@ -1,16 +1,25 @@
+package pages;
+
 import javax.swing.*;
 
+/**
+ * Page class for the user creation actions
+ */
 public class UserPage extends JPanel {
+
     private JPanel page;
     private JRadioButton singleUserRadioButton;
     private JRadioButton bulkUserradioButton;
     private ButtonGroup buttonGroup;
 
     public UserPage() {
-
         initComponents();
+        layoutComponents();
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         page = new JPanel();
         singleUserRadioButton = new JRadioButton("Create a single user");
@@ -26,6 +35,13 @@ public class UserPage extends JPanel {
         singleUserRadioButton.addActionListener(e -> {
 
         });
+    }
+
+    /**
+     * Lays-out all the components
+     */
+    private void layoutComponents() {
+
     }
 
 }
