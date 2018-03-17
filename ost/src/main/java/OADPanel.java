@@ -1,3 +1,5 @@
+import pages.UserPage;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,6 +9,7 @@ import java.awt.*;
 public class OADPanel extends JPanel {
 
     private JTabbedPane tabbedPane;
+    private UserPage userPage;
 
     /**
      * Default constructor
@@ -21,7 +24,9 @@ public class OADPanel extends JPanel {
      */
     private void initComponents() {
         tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+        userPage = new UserPage();
 
+        tabbedPane.addTab("Users", userPage);
     }
 
     /**

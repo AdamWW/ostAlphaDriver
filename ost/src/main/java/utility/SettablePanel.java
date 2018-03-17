@@ -22,9 +22,12 @@ public class SettablePanel extends JPanel {
      *
      * @param comp the new component to set in this panel
      */
-    public void swap(Component comp) {
+    public void set(Component comp) {
         Preconditions.checkNotNull(comp);
         removeAll();
         add(comp, BorderLayout.CENTER);
+        invalidate();
+        revalidate();
+        repaint();
     }
 }

@@ -1,18 +1,25 @@
 package pages;
 
+import pages.userPanels.BulkUserPanel;
+import pages.userPanels.SingleUserPanel;
+import utility.SettablePanel;
+
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Page class for the user creation actions
  */
 public class UserPage extends JPanel {
 
-    private JPanel page;
     private JRadioButton singleUserRadioButton;
-    private JRadioButton bulkUserradioButton;
-    private ButtonGroup buttonGroup;
+    private JRadioButton bulkUserRadioButton;
+    private SingleUserPanel singleUserPanel;
+    private BulkUserPanel bulkUserPanel;
+    private SettablePanel settablePanel;
 
     public UserPage() {
+        super(new BorderLayout());
         initComponents();
         layoutComponents();
     }
@@ -21,27 +28,41 @@ public class UserPage extends JPanel {
      * Initializes the components
      */
     private void initComponents() {
-        page = new JPanel();
         singleUserRadioButton = new JRadioButton("Create a single user");
-        bulkUserradioButton = new JRadioButton("Create multiple users");
-        buttonGroup = new ButtonGroup();
+        bulkUserRadioButton = new JRadioButton("Create multiple users");
+        ButtonGroup buttonGroup = new ButtonGroup();
 
-        buttonGroup.add(singleUserRadioButton);
-        buttonGroup.add(bulkUserradioButton);
-        singleUserRadioButton.setSelected(true);
-
-        page.setBorder(BorderFactory.createTitledBorder(""));
+        settablePanel = new SettablePanel();
+        singleUserPanel = new SingleUserPanel();
+        bulkUserPanel = new BulkUserPanel();
 
         singleUserRadioButton.addActionListener(e -> {
-
+            settablePanel.set(singleUserPanel);
         });
+
+        bulkUserRadioButton.addActionListener(e -> {
+            settablePanel.set(bulkUserPanel);
+        });
+
+        buttonGroup.add(singleUserRadioButton);
+        buttonGroup.add(bulkUserRadioButton);
+        singleUserRadioButton.setSelected(true);
     }
 
     /**
      * Lays-out all the components
      */
     private void layoutComponents() {
+        setLayout(new BorderLayout());
+        JPanel topPanel = new JPanel();
 
+        topPanel.add(singleUserRadioButton);
+        topPanel.add(bulkUserRadioButton);
+
+        add(topPanel, BorderLayout.PAGE_START);
+        add(settablePanel, BorderLayout.CENTER);
+
+        settablePanel.set(singleUserPanel);
     }
 
 }

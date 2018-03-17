@@ -7,6 +7,8 @@ import java.awt.*;
  * Main class for the UI - OST α driver!
  */
 public class OADClient extends JFrame {
+    private static String apiKey = "";
+    private static String apiSecret = "";
 
     /**
      * Default constructor
@@ -14,7 +16,7 @@ public class OADClient extends JFrame {
     public OADClient() {
         super("OST ALPHA DRIVER APP");
         setIconImage(Constants.OST_ICON.getImage());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setContentPane(new OADPanel());
     }
 
@@ -59,9 +61,13 @@ public class OADClient extends JFrame {
                         "API key or secret is less than the minimum recognized length. Please try again.", "API Key / Secret Error",
                         JOptionPane.ERROR_MESSAGE, null);
             }
+
         } while (empty);
 
         if (response == JOptionPane.OK_OPTION) {
+            apiKey = apiField.getText();
+            apiSecret = secretField.getText();
+
             JFrame ostDriverFrame = new OADClient();
 
             ostDriverFrame.setLocationRelativeTo(null);
