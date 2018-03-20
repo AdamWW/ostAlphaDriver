@@ -7,6 +7,9 @@ import javax.swing.*;
  */
 public class SingleUserPanel extends JPanel {
 
+    private JTextField nameField;
+
+
     /**
      * Default constructor
      */
